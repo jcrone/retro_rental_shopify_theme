@@ -8,20 +8,32 @@ sits low and left on a paper "ticket" panel so the kid stays clear of it.
 Built on [Dawn 16](https://github.com/Shopify/dawn), so every page Shopify
 needs — product, collection, cart, search, account — already works.
 
+**The theme is at the root of this repo**, which is what Shopify's GitHub
+connection expects. Everything under `design/` is generated from it and is
+ignored by Shopify.
+
 ---
 
-## Install it (the quick way)
+## Install it from GitHub
 
-1. Download **`dist/beaverton-retro-theme.zip`**.
-2. Shopify admin → **Online Store → Themes → Add theme → Upload zip file**.
-3. **Customize** the theme, open the **Retro hero** section, and pick your
-   hero photo.
-4. Happy with it? **Actions → Publish**.
+1. Shopify admin → **Online Store → Themes → Add theme → Connect from GitHub**.
+2. Authorise the Shopify GitHub app for `jcrone/retro_rental_shopify_theme` if
+   it asks.
+3. Pick this repository and the branch
+   **`claude/retro-theme-kid-character-x4lsfj`**.
+4. **Customize** the theme, open the **Retro hero** section, and pick your hero
+   photo.
+5. Happy with it? **Actions → Publish**.
 
-The homepage comes pre-built: ticker, hero, stripe divider, three-fact bar,
-lift-ticket packages, fitting band, four numbered steps, coming-soon band, FAQ.
-Every heading, paragraph, button and list item is editable in the theme editor —
-nothing is hard-coded.
+From then on it's a two-way sync: edits in the theme editor get committed back
+to the branch, and commits you push show up in the theme. Which means:
+
+- **`assets/retro.css` is the source of truth for the look, not a build
+  output.** Edit it here or in the editor; nothing regenerates over it.
+- Anything under `design/` and `dist/` is generated, and Shopify never reads it.
+
+Prefer a zip? `dist/beaverton-retro-theme.zip` still works with
+**Add theme → Upload zip file**, and `node build.js --zip` rebuilds it.
 
 ## Framing the hero photo
 
@@ -40,46 +52,52 @@ browser gives the photo the whole middle and right of the frame.
 If the photo isn't set yet, the hero shows a labelled placeholder rather than a
 broken image.
 
-## Selling through the package cards
+## The homepage
+
+`templates/index.json` arrives assembled: ticker, hero, stripe divider,
+three-fact bar, lift-ticket packages, fitting band, four numbered steps,
+coming-soon band, FAQ. Every heading, paragraph, button and list item is
+editable in the theme editor — nothing is hard-coded.
+
+### Selling through the package cards
 
 Each card in **Retro packages** has an optional **Product** setting. Leave it
 empty and the card shows your placeholder price and links wherever you point it.
 Pick a product and the card switches to the real price and a working
 add-to-cart button, and goes to "Sold out" on its own when stock runs out.
 
-## Using the look without replacing your theme
-
-If you'd rather keep the theme you have:
-
-1. Paste `shopify/custom-css.css` into **Theme settings → Custom CSS**
-   (the `@import` line must stay first, or Archivo Black won't load).
-2. Add a **Custom Liquid** section per file in `shopify/sections/`, in numbered
-   order.
-
-Product cards, prices, badges, buttons and the footer restyle themselves either
-way — those rules target the theme's own classes.
-
 ## What's in here
 
 | Path | What it is |
 | --- | --- |
-| `dist/beaverton-retro-theme.zip` | The uploadable theme. |
-| `theme/` | That theme's source — Dawn 16 plus the retro layer. |
-| `theme/sections/retro-*.liquid` | The nine custom sections, with editor controls. |
-| `theme/assets/retro.css` | Generated from `shopify/custom-css.css`. |
-| `shopify/custom-css.css` | The whole look as one CSS block, for the layering route. |
-| `shopify/sections/*.liquid` | Paste-in Custom Liquid, for the layering route. |
-| `mockup/index.html` | The full page as one flat file, for showing people. |
-| `assets/kid-skier.svg` | Drawn character — used as the logo badge, see below. |
-| `assets/logo-badge.svg` | Round logo badge built from that character. |
+| `assets/`, `config/`, `layout/`, `locales/`, `sections/`, `snippets/`, `templates/` | The theme. Dawn 16 plus the retro layer. |
+| `assets/retro.css` | The whole look, in one stylesheet. Loaded last so it wins. |
+| `sections/retro-*.liquid` | The nine custom sections, with editor controls. |
+| `assets/kid-skier.svg`, `assets/logo-badge.svg` | Drawn character and logo badge — see below. |
+| `design/mockup.html` | The full page as one flat file, for showing people. |
+| `design/custom-css.css`, `design/custom-liquid/` | The same look for a theme you'd rather keep. See below. |
+| `design/src/` | Mockup sources. |
+| `build.js` | Regenerates `design/` and the zip. |
+
+## Using the look without replacing your theme
+
+If you'd rather keep the theme you have:
+
+1. Paste `design/custom-css.css` into **Theme settings → Custom CSS**
+   (the `@import` line must stay first, or Archivo Black won't load).
+2. Add a **Custom Liquid** section per file in `design/custom-liquid/`, in
+   numbered order.
+
+Product cards, prices, badges, buttons and the footer restyle themselves either
+way — those rules target the theme's own classes.
 
 ## The drawn kid
 
 `assets/kid-skier.svg` is a flat-colour illustration in the theme palette. The
 hero uses your **photo** — the drawing is for the places a photo doesn't fit:
-the logo badge, a 404 page, an empty cart, a favicon. Both files are copied into
-`theme/assets/`, so in Liquid they're `{{ 'kid-skier.svg' | asset_url }}`.
-Style them with `.bsr-kid` or `.bsr-kid--sm`.
+the logo badge, a 404 page, an empty cart, a favicon. In Liquid they're
+`{{ 'kid-skier.svg' | asset_url }}`. Style them with `.bsr-kid` or
+`.bsr-kid--sm`.
 
 ## Palette
 
@@ -95,18 +113,18 @@ Style them with `.bsr-kid` or `.bsr-kid--sm`.
 | `--bsr-cocoa` | `#3B2416` | every border and outline |
 
 Dawn's own colour schemes are set to the same palette in
-`theme/config/settings_data.json`, so native sections match the custom ones.
+`config/settings_data.json`, so native sections match the custom ones.
 
-## Rebuilding
-
-`mockup/index.html`, `shopify/sections/`, `theme/assets/retro.css` and the zip
-are all generated. Edit `shopify/custom-css.css`, `src/mockup.html` or
-`src/mockup.css`, then:
+## Rebuilding the generated files
 
 ```
 node build.js --zip
 ```
 
-Sections for the layering route are sliced out of the mockup at
+Reads `assets/retro.css` and `design/src/`, and writes `design/mockup.html`,
+`design/custom-css.css`, `design/custom-liquid/` and the zip. It never writes
+into the theme folders, so it can't collide with the GitHub sync.
+
+The Custom Liquid sections are sliced out of the mockup at
 `@section <slug> | <title>` comments, so the mockup and what you paste into
 Shopify can't drift apart.

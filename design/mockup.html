@@ -1,25 +1,35 @@
-/* ============================================================
-   BEAVERTON SKI RENTALS — RETRO THEME PACK  (v2)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beaverton Ski Rentals — Retro Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,500;0,700;1,600&display=swap" rel="stylesheet">
+<style>/* ============================================================
+   BEAVERTON SKI RENTALS — RETRO THEME
 
-   Paste into: Shopify admin → Online Store → Themes → Customize
-               → Theme settings → Custom CSS
+   The one source of truth for the look. Loaded last in
+   layout/theme.liquid so it wins over every Dawn stylesheet, and the
+   file the GitHub sync writes to — so edit it here or in the theme
+   editor, never as a build output.
 
-   What changed from v1
+   This file ships with the theme. If you are layering the look onto a
+   different theme instead, paste design/custom-css.css into Theme
+   settings → Custom CSS.
+
+   The design
      · no geometric decoration anywhere. The kid photo carries the top
        of the page; lift-ticket, stripe and halftone motifs carry the rest
-     · new full-bleed photo hero with a warm 70s colour grade and a
-       paper copy-panel that stays legible over any crop
-     · the section components (ticker, lift tickets, facts, steps,
-       fitting card, FAQ) now live here too, so the Custom Liquid
-       sections in this folder work with nothing else to install
+     · a full-bleed photo hero with a warm 70s colour grade and a paper
+       copy-panel that sits low and left, clear of the subject
      · every custom class is prefixed `bsr-` so nothing collides with
-       the theme
-
-   The @import MUST stay on the very first line or the fonts
-   will not load.
+       the rest of the theme
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,500;0,700;1,600&display=swap');
+/* Fonts are loaded with a <link> in layout/theme.liquid. */
+
 
 :root,
 .color-scheme-1, .color-scheme-2, .color-scheme-3,
@@ -768,3 +778,396 @@ body::after {
   .card-wrapper .card { box-shadow: 5px 5px 0 var(--bsr-cocoa) !important; }
   .card__content::before, .card__content::after { display: none; }
 }
+</style>
+<style>/* ------------------------------------------------------------------
+   Mockup shell only.
+
+   Every component the live store needs lives in
+   shopify/custom-css.css. This file just rebuilds what Dawn/Horizon
+   would give you for free — reset, nav, footer — so the mockup opens
+   as a single flat HTML file.
+   ------------------------------------------------------------------ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  background: var(--bsr-paper);
+  color: var(--bsr-ink);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+a { text-decoration: none; }
+
+.mocknote {
+  background: var(--bsr-cocoa);
+  color: var(--bsr-mustard);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  text-align: center; padding: 8px;
+}
+
+/* ---------- nav (theme header stand-in) ---------- */
+.shellnav {
+  background: var(--bsr-paper);
+  border-bottom: 3px solid var(--bsr-cocoa);
+  position: sticky; top: 0; z-index: 30;
+}
+.shellnav__row { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+.shellnav__badge { width: 62px; height: 62px; display: block; }
+.shellnav__brand { display: flex; align-items: center; gap: 13px; }
+.shellnav__name { font-size: 17px; color: var(--bsr-cocoa); line-height: 1.05; }
+.shellnav__links { display: flex; gap: 26px; align-items: center; }
+.shellnav__links a {
+  color: var(--bsr-cocoa); font-weight: 700; font-size: 13px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+.shellnav__links a:hover { color: var(--bsr-orange); }
+.shellnav__soon {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em; font-style: normal;
+  background: var(--bsr-paper2); color: var(--bsr-cocoa);
+  padding: 3px 6px; border-radius: 3px; border: 1.5px solid var(--bsr-cocoa);
+}
+
+/* ---------- footer (theme footer stand-in) ---------- */
+.shellfoot {
+  background: var(--bsr-teal2); color: rgba(247,239,224,0.72);
+  padding: 56px 0 28px; border-top: 3px solid var(--bsr-cocoa);
+}
+.shellfoot__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 34px; margin-bottom: 36px; }
+.shellfoot h5 {
+  font-family: "Archivo Black", sans-serif; color: var(--bsr-mustard);
+  font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px;
+}
+.shellfoot a { display: block; color: rgba(247,239,224,0.72); font-size: 13.5px; margin-bottom: 8px; }
+.shellfoot a:hover { color: var(--bsr-mustard); }
+.shellfoot p { font-size: 13.5px; }
+.shellfoot__bottom {
+  border-top: 2px solid rgba(247,239,224,0.18); padding-top: 20px;
+  font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(247,239,224,0.42); display: flex; justify-content: space-between;
+  gap: 18px; flex-wrap: wrap;
+}
+
+@media (max-width: 989px) {
+  .shellnav__links { display: none; }
+  .shellfoot__grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="mocknote">Design mockup · Retro direction · Placeholder copy, prices not set</div>
+
+<!-- @section ticker | Scrolling ticker bar -->
+<div class="bsr-ticker">
+  <div class="bsr-ticker__track">
+    <span>★ Winter 2026–27 season leases open ★ Free mid-season size swap ★ Fitted by real technicians ★ 45 min to Mt. Hood ★ Daily rentals coming soon</span>
+    <span>★ Winter 2026–27 season leases open ★ Free mid-season size swap ★ Fitted by real technicians ★ 45 min to Mt. Hood ★ Daily rentals coming soon</span>
+  </div>
+</div>
+
+<!-- @skip header (the real theme header replaces this) -->
+<nav class="shellnav">
+  <div class="bsr-wrap shellnav__row">
+    <a href="#" class="shellnav__brand">
+      <span class="shellnav__badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Beaverton Ski Rentals badge">
+  <circle cx="60" cy="60" r="56" fill="#F0A828" stroke="#3B2416" stroke-width="5"/>
+  <circle cx="60" cy="60" r="45" fill="#17414F" stroke="#3B2416" stroke-width="4"/>
+  <g transform="translate(60,64) scale(0.49) translate(-180,-76)"
+     fill="none" stroke="#3B2416" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="180" cy="100" r="58" fill="#EFE1C8"/>
+    <g stroke="none">
+      <circle cx="142" cy="126" r="9.5" fill="#E2582C" opacity=".75"/>
+      <circle cx="218" cy="126" r="9.5" fill="#E2582C" opacity=".75"/>
+    </g>
+    <path d="M163 132 q17 17 34 0" stroke-width="5"/>
+    <path d="M114 84 q-11 5 -10 13" stroke-width="10" stroke="#17414F"/>
+    <path d="M246 84 q11 5 10 13" stroke-width="10" stroke="#17414F"/>
+    <path d="M124 66 h112 a14 14 0 0 1 14 14 v16 a16 16 0 0 1 -16 16 h-108 a16 16 0 0 1 -16 -16 v-16 a14 14 0 0 1 14 -14 Z" fill="#17414F"/>
+    <path d="M133 76 h94 a7 7 0 0 1 7 7 v13 a8 8 0 0 1 -8 8 h-92 a8 8 0 0 1 -8 -8 v-13 a7 7 0 0 1 7 -7 Z" fill="#F0A828"/>
+    <g stroke="#F7EFE0" stroke-linecap="butt">
+      <path d="M146 100 l20 -20" stroke-width="7"/>
+      <path d="M164 100 l20 -20" stroke-width="4.5"/>
+    </g>
+    <path d="M120 62 q4 -54 60 -54 q56 0 60 54 Z" fill="#E2582C"/>
+    <path d="M112 44 h136 a11 11 0 0 1 11 11 v6 a11 11 0 0 1 -11 11 h-136 a11 11 0 0 1 -11 -11 v-6 a11 11 0 0 1 11 -11 Z" fill="#F7EFE0"/>
+    <circle cx="180" cy="12" r="17" fill="#F7EFE0"/>
+  </g>
+</svg></span>
+      <span class="bsr-display shellnav__name">Beaverton<br>Ski Rentals</span>
+    </a>
+    <div class="shellnav__links">
+      <a href="#tickets">Season Leases</a>
+      <a href="#soon">Daily <em class="shellnav__soon">Soon</em></a>
+      <a href="#how">How It Works</a>
+      <a href="#faq">FAQ</a>
+      <a class="bsr-btn bsr-btn--orange bsr-btn--sm" href="#tickets">Reserve Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- @section hero-kid | Hero: kid photo, retro-graded -->
+<header class="bsr-hero">
+  <div class="bsr-hero__media">
+    <!-- Swap this src for your own hero photo. This is the image
+         already sitting on the store's Shopify CDN. -->
+    <img src="https://cdn.shopify.com/s/files/1/0926/4031/3366/files/61d0b2404a32b68f4dc1f7d015e8457b.png?v=15025210&width=2400"
+         alt="Kid in ski gear on the mountain"
+         onerror="this.closest('.bsr-hero__media').setAttribute('data-missing','')">
+    <div class="bsr-hero__fallback">Your hero photo loads here</div>
+  </div>
+  <div class="bsr-hero__inner">
+    <div class="bsr-hero__panel">
+      <span class="bsr-hero__kicker">★ Kids Season Leases · Winter 2026–27</span>
+      <h1 class="bsr-display">One price.<br><span class="bsr-hero__out">All winter.</span></h1>
+      <p class="bsr-hero__lead">
+        Skis, boots and poles for the whole season — fitted properly, swapped free
+        when they hit a growth spurt. Because nobody wants to rent gear at the
+        mountain at 7am. Again.
+      </p>
+      <div class="bsr-hero__btns">
+        <a class="bsr-btn bsr-btn--orange" href="#tickets">Reserve a Season Set</a>
+        <a class="bsr-btn bsr-btn--paper" href="#how">How It Works</a>
+      </div>
+      <p class="bsr-hero__note">Paid in full online · Fitting appointment booked after checkout</p>
+    </div>
+  </div>
+</header>
+
+<!-- @section stripe-divider | Four-colour stripe divider -->
+<div class="bsr-stripes"></div>
+
+<!-- @section facts | Three-fact reassurance bar -->
+<div class="bsr-facts">
+  <div class="bsr-wrap bsr-facts__in">
+    <div class="bsr-fact">
+      <div class="bsr-fact__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7EFE0" stroke-width="2.4" stroke-linecap="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+      <div><b>Free size swap</b><span>They grow — we re-fit, no charge</span></div>
+    </div>
+    <div class="bsr-fact">
+      <div class="bsr-fact__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7EFE0" stroke-width="2.4" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.8-3.8a6 6 0 01-7.9 7.9l-6.9 6.9a2.1 2.1 0 01-3-3l6.9-6.9a6 6 0 017.9-7.9l-3.8 3.8z"/></svg></div>
+      <div><b>Fitted by a technician</b><span>Bindings set to weight &amp; ability</span></div>
+    </div>
+    <div class="bsr-fact">
+      <div class="bsr-fact__ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7EFE0" stroke-width="2.4" stroke-linecap="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+      <div><b>Pick up in Beaverton</b><span>Skip the rental line at the mountain</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- @section lift-tickets | Package cards as lift tickets -->
+<section class="bsr-section" id="tickets">
+  <div class="bsr-wrap">
+    <div class="bsr-sechead">
+      <span class="bsr-pill">★ The Packages</span>
+      <h2 class="bsr-display">Grab your season pass<br>to not renting twice.</h2>
+      <p>Every lease runs the full winter and includes a free size exchange if your
+         kid outgrows their setup halfway through.</p>
+    </div>
+
+    <div class="bsr-tickets">
+      <div class="bsr-ticket bsr-ticket--hot">
+        <span class="bsr-flag">Most popular</span>
+        <div class="bsr-ticket__top">
+          <div class="bsr-ticket__no">Lease No. 01</div>
+          <h3>Full Season<br>Package</h3>
+          <p class="bsr-ticket__sub">Skis · Boots · Poles</p>
+          <span class="bsr-notch bsr-notch--l"></span><span class="bsr-notch bsr-notch--r"></span>
+        </div>
+        <div class="bsr-ticket__body">
+          <ul>
+            <li>Junior skis sized to height &amp; ability</li>
+            <li>Boots fitted in store</li>
+            <li>Poles included</li>
+            <li>Free mid-season size exchange</li>
+            <li>Bindings tested &amp; set to spec</li>
+          </ul>
+          <div><span class="bsr-amt">Price TBD</span> <span class="bsr-per">/ season</span></div>
+          <a class="bsr-btn bsr-btn--orange" href="#">Reserve This</a>
+        </div>
+      </div>
+
+      <div class="bsr-ticket">
+        <div class="bsr-ticket__top">
+          <div class="bsr-ticket__no">Lease No. 02</div>
+          <h3>Skis &amp;<br>Boots</h3>
+          <p class="bsr-ticket__sub">Already have poles?</p>
+          <span class="bsr-notch bsr-notch--l"></span><span class="bsr-notch bsr-notch--r"></span>
+        </div>
+        <div class="bsr-ticket__body">
+          <ul>
+            <li>Junior skis sized to height &amp; ability</li>
+            <li>Boots fitted in store</li>
+            <li>Free mid-season size exchange</li>
+            <li>Bindings tested &amp; set to spec</li>
+          </ul>
+          <div><span class="bsr-amt">Price TBD</span> <span class="bsr-per">/ season</span></div>
+          <a class="bsr-btn bsr-btn--paper" href="#">Reserve This</a>
+        </div>
+      </div>
+
+      <div class="bsr-ticket">
+        <div class="bsr-ticket__top">
+          <div class="bsr-ticket__no">Add-On</div>
+          <h3>Season<br>Helmet</h3>
+          <p class="bsr-ticket__sub">Add to any lease</p>
+          <span class="bsr-notch bsr-notch--l"></span><span class="bsr-notch bsr-notch--r"></span>
+        </div>
+        <div class="bsr-ticket__body">
+          <ul>
+            <li>Adjustable junior fit</li>
+            <li>Certified &amp; sanitized</li>
+            <li>Swaps with the size exchange</li>
+          </ul>
+          <div><span class="bsr-amt">Price TBD</span> <span class="bsr-per">/ season</span></div>
+          <a class="bsr-btn bsr-btn--paper" href="#">Add A Helmet</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- @section fitting | Fitting-details band -->
+<section class="bsr-fitting bsr-section">
+  <div class="bsr-wrap bsr-fitting__grid">
+    <div class="bsr-fitting__copy">
+      <span class="bsr-pill bsr-pill--mustard">★ The Fit</span>
+      <h2 class="bsr-display">Four numbers.<br>One perfect setup.</h2>
+      <p>Junior gear isn't a t-shirt size. Ski length comes from height, binding
+         release comes from weight, and both get dialed in for how confidently
+         your kid actually skis.</p>
+      <p>You tell us at checkout, we pull the right setup before you show up, and a
+         technician confirms it in person. No guessing from a dropdown.</p>
+    </div>
+    <div class="bsr-formcard">
+      <h4>★ Fitting details — collected at checkout</h4>
+      <div class="bsr-duo">
+        <div class="bsr-field"><label>Age</label><div class="bsr-inp">8 years</div></div>
+        <div class="bsr-field"><label>Height</label><div class="bsr-inp">4′ 3″</div></div>
+      </div>
+      <div class="bsr-duo">
+        <div class="bsr-field"><label>Weight</label><div class="bsr-inp">62 lbs</div></div>
+        <div class="bsr-field"><label>Boot size (if known)</label><div class="bsr-inp">Youth 3</div></div>
+      </div>
+      <div class="bsr-field">
+        <label>Skier ability</label>
+        <div class="bsr-chips">
+          <span class="bsr-chip">First time</span>
+          <span class="bsr-chip bsr-chip--on">Beginner</span>
+          <span class="bsr-chip">Intermediate</span>
+          <span class="bsr-chip">Advanced</span>
+        </div>
+      </div>
+      <p class="bsr-fnote">Not sure on a number? Ballpark it — we measure and confirm
+         everything at the fitting appointment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- @section how-it-works | Four numbered steps -->
+<section class="bsr-section" id="how">
+  <div class="bsr-wrap">
+    <div class="bsr-sechead">
+      <span class="bsr-pill">★ How It Works</span>
+      <h2 class="bsr-display">Four steps to a season<br>on the mountain.</h2>
+    </div>
+    <div class="bsr-steps">
+      <div class="bsr-step">
+        <span class="bsr-step__num">01</span>
+        <h3>Reserve online</h3>
+        <p>Pick a package, enter your kid's fitting details, pay for the season in full.</p>
+      </div>
+      <div class="bsr-step">
+        <span class="bsr-step__num">02</span>
+        <h3>Book the fitting</h3>
+        <p>We email you to schedule a fitting appointment at the Beaverton shop.</p>
+      </div>
+      <div class="bsr-step">
+        <span class="bsr-step__num">03</span>
+        <h3>Ski all winter</h3>
+        <p>Gear lives at your house all season. Growth spurt? Bring it in and swap.</p>
+      </div>
+      <div class="bsr-step">
+        <span class="bsr-step__num">04</span>
+        <h3>Return in spring</h3>
+        <p>Drop it back by the season return date. We handle the tune and the storage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- @section coming-soon | Coming-soon band -->
+<section class="bsr-soon bsr-section" id="soon">
+  <div class="bsr-wrap bsr-soon__grid">
+    <div>
+      <span class="bsr-pill bsr-pill--mustard">★ Coming Soon</span>
+      <h2 class="bsr-display">Daily rentals are<br><span class="bsr-soon__hl">on the way.</span></h2>
+      <p class="bsr-soon__copy">Just need gear for a Saturday on Hood? Day and weekend rentals with online
+         date booking are coming this winter. Get on the list and you'll book first.</p>
+      <div class="bsr-signup">
+        <div class="bsr-inp">you@email.com</div>
+        <a class="bsr-btn bsr-btn--mustard" href="#">Notify Me</a>
+      </div>
+    </div>
+    <div class="bsr-soon__list">
+      <div class="bsr-soon__item"><b>Adult ski packages</b><span>Coming soon</span></div>
+      <div class="bsr-soon__item"><b>Snowboard &amp; boots</b><span>Coming soon</span></div>
+      <div class="bsr-soon__item"><b>Jackets, pants &amp; goggles</b><span>Coming soon</span></div>
+      <div class="bsr-soon__item"><b>Weekend multi-day rates</b><span>Coming soon</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- @section faq | FAQ grid -->
+<section class="bsr-section" id="faq">
+  <div class="bsr-wrap">
+    <div class="bsr-sechead">
+      <span class="bsr-pill">★ Questions</span>
+      <h2 class="bsr-display">What parents ask us most.</h2>
+    </div>
+    <div class="bsr-faq">
+      <div class="bsr-qa"><h3>What if my kid grows mid-season?</h3>
+        <p>Bring the setup in and we'll re-fit them into the next size up. Included in every lease.</p></div>
+      <div class="bsr-qa"><h3>How long is the season?</h3>
+        <p>From pickup through the posted spring return date. Exact dates are confirmed in your reservation email.</p></div>
+      <div class="bsr-qa"><h3>Do I need to know their boot size?</h3>
+        <p>Nope. Give us your best guess online — we measure and fit properly at the appointment.</p></div>
+      <div class="bsr-qa"><h3>What if the gear gets damaged?</h3>
+        <p>Normal wear from a winter of skiing is expected. Damage terms are spelled out in the rental agreement you sign at fitting.</p></div>
+      <div class="bsr-qa"><h3>Can I lease for more than one kid?</h3>
+        <p>Yes — add a package per child and enter each kid's fitting details separately at checkout.</p></div>
+      <div class="bsr-qa"><h3>When do daily rentals open?</h3>
+        <p>We're building them now. Join the notify list above and you'll hear the moment booking goes live.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- @skip footer (the real theme footer replaces this) -->
+<footer class="shellfoot">
+  <div class="bsr-wrap">
+    <div class="shellfoot__grid">
+      <div>
+        <h5>★ Beaverton Ski Rentals</h5>
+        <p style="margin-bottom:14px">Season leases and daily rentals for Portland-area
+           families headed up to Mt. Hood.</p>
+        <p style="font-size:12.5px;color:rgba(247,239,224,.45)">Shop address, phone and hours go here</p>
+      </div>
+      <div><h5>Rentals</h5>
+        <a href="#">Kids season leases</a><a href="#">Season helmets</a><a href="#">Daily rentals (soon)</a></div>
+      <div><h5>Info</h5>
+        <a href="#">How it works</a><a href="#">Sizing &amp; fit guide</a><a href="#">FAQ</a><a href="#">Rental agreement</a></div>
+      <div><h5>Contact</h5>
+        <a href="#">Book a fitting</a><a href="#">Email us</a><a href="#">Directions</a></div>
+    </div>
+    <div class="shellfoot__bottom">
+      <span>© 2026 Beaverton Ski Rentals</span>
+      <span>Refund policy · Terms · Privacy</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

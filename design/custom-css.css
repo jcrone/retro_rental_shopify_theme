@@ -1,26 +1,23 @@
 /* ============================================================
-   BEAVERTON SKI RENTALS — RETRO THEME PACK  (v2)
+   BEAVERTON SKI RENTALS — RETRO THEME
 
-   This file ships with the theme. If you are layering the look
-   onto a different theme instead, paste shopify/custom-css.css into
-   Theme settings → Custom CSS.
+   Generated from assets/retro.css — edit that, not this.
 
-   What changed from v1
+   Paste into: Online Store → Themes → Customize → Theme settings
+               → Custom CSS. The @import must stay on the very first
+               line or the fonts will not load.
+
+   The design
      · no geometric decoration anywhere. The kid photo carries the top
        of the page; lift-ticket, stripe and halftone motifs carry the rest
-     · new full-bleed photo hero with a warm 70s colour grade and a
-       paper copy-panel that stays legible over any crop
-     · the section components (ticker, lift tickets, facts, steps,
-       fitting card, FAQ) now live here too, so the Custom Liquid
-       sections in this folder work with nothing else to install
+     · a full-bleed photo hero with a warm 70s colour grade and a paper
+       copy-panel that sits low and left, clear of the subject
      · every custom class is prefixed `bsr-` so nothing collides with
-       the theme
-
-   The @import MUST stay on the very first line or the fonts
-   will not load.
+       the rest of the theme
    ============================================================ */
 
-/* Fonts are loaded with a <link> in layout/theme.liquid. */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,500;0,700;1,600&display=swap');
+
 
 :root,
 .color-scheme-1, .color-scheme-2, .color-scheme-3,

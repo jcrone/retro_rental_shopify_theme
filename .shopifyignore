@@ -1,0 +1,7 @@
+# Not part of the theme — Shopify's GitHub sync only reads the theme
+# folders, but this keeps `shopify theme` CLI commands clean too.
+design/
+dist/
+build.js
+README.md
+.prettierrc.json

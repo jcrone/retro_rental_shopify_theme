@@ -1,10 +1,10 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Dawn",
-    "theme_version": "16.0.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_name": "Beaverton Retro",
+    "theme_version": "1.0.0",
+    "theme_author": "Beaverton Ski Rentals",
+    "theme_documentation_url": "https://github.com/jcrone/retro_rental_shopify_theme",
     "theme_support_url": "https://support.shopify.com/"
   },
   {
