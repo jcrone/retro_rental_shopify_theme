@@ -1,6 +1,6 @@
 # Beaverton Ski Rentals — retro theme
 
-A retro Shopify theme for kids' season ski leases. **The kid photo carries the
+A retro Shopify theme for kids' season ski rentals. **The kid photo carries the
 front page** — no geometric poster art, no shape collages. The photo runs
 full-bleed with a warm 1970s colour grade and a printed halftone, and the copy
 sits low and left on a paper "ticket" panel so the kid stays clear of it.

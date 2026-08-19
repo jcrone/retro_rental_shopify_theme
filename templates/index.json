@@ -58,7 +58,7 @@
           "settings": {
             "featured": true,
             "flag": "Most popular",
-            "label": "Lease No. 01",
+            "label": "Rental No. 01",
             "title": "Full Season Package",
             "subtitle": "Skis \u00b7 Boots \u00b7 Poles"
           }
@@ -66,7 +66,7 @@
         "p2": {
           "type": "package",
           "settings": {
-            "label": "Lease No. 02",
+            "label": "Rental No. 02",
             "title": "Skis & Boots",
             "subtitle": "Already have poles?",
             "features": "Junior skis sized to height & ability\nBoots fitted in store\nFree mid-season size exchange\nBindings tested & set to spec"
@@ -77,7 +77,7 @@
           "settings": {
             "label": "Add-On",
             "title": "Season Helmet",
-            "subtitle": "Add to any lease",
+            "subtitle": "Add to any rental",
             "features": "Adjustable junior fit\nCertified & sanitized\nSwaps with the size exchange",
             "button_label": "Add A Helmet"
           }
@@ -221,7 +221,7 @@
           "type": "qa",
           "settings": {
             "question": "What if my kid grows mid-season?",
-            "answer": "Bring the setup in and we'll re-fit them into the next size up. Included in every lease."
+            "answer": "Bring the setup in and we'll re-fit them into the next size up. Included in every rental."
           }
         },
         "q2": {
@@ -248,7 +248,7 @@
         "q5": {
           "type": "qa",
           "settings": {
-            "question": "Can I lease for more than one kid?",
+            "question": "Can I rent for more than one kid?",
             "answer": "Yes \u2014 add a package per child and enter each kid's fitting details separately at checkout."
           }
         },
