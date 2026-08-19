@@ -1,0 +1,36 @@
+{%- comment -%}
+  Hero: kid photo, retro-graded
+
+  Online Store → Themes → Customize → Add section → Custom Liquid,
+  then paste everything below this comment.
+
+  Needs shopify/custom-css.css in Theme settings → Custom CSS.
+  Generated from src/mockup.html by build.js — edit that, not this.
+{%- endcomment -%}
+
+<header class="bsr-hero">
+  <div class="bsr-hero__media">
+    <!-- Swap this src for your own hero photo. This is the image
+         already sitting on the store's Shopify CDN. -->
+    <img src="https://cdn.shopify.com/s/files/1/0926/4031/3366/files/61d0b2404a32b68f4dc1f7d015e8457b.png?v=15025210&width=2400"
+         alt="Kid in ski gear on the mountain"
+         onerror="this.closest('.bsr-hero__media').setAttribute('data-missing','')">
+    <div class="bsr-hero__fallback">Your hero photo loads here</div>
+  </div>
+  <div class="bsr-hero__inner">
+    <div class="bsr-hero__panel">
+      <span class="bsr-hero__kicker">★ Kids Season Leases · Winter 2026–27</span>
+      <h1 class="bsr-display">One price.<br><span class="bsr-hero__out">All winter.</span></h1>
+      <p class="bsr-hero__lead">
+        Skis, boots and poles for the whole season — fitted properly, swapped free
+        when they hit a growth spurt. Because nobody wants to rent gear at the
+        mountain at 7am. Again.
+      </p>
+      <div class="bsr-hero__btns">
+        <a class="bsr-btn bsr-btn--orange" href="#tickets">Reserve a Season Set</a>
+        <a class="bsr-btn bsr-btn--paper" href="#how">How It Works</a>
+      </div>
+      <p class="bsr-hero__note">Paid in full online · Fitting appointment booked after checkout</p>
+    </div>
+  </div>
+</header>

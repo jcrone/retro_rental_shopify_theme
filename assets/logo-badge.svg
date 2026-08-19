@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Beaverton Ski Rentals badge">
+  <circle cx="60" cy="60" r="56" fill="#F0A828" stroke="#3B2416" stroke-width="5"/>
+  <circle cx="60" cy="60" r="45" fill="#17414F" stroke="#3B2416" stroke-width="4"/>
+  <g transform="translate(60,64) scale(0.49) translate(-180,-76)"
+     fill="none" stroke="#3B2416" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="180" cy="100" r="58" fill="#EFE1C8"/>
+    <g stroke="none">
+      <circle cx="142" cy="126" r="9.5" fill="#E2582C" opacity=".75"/>
+      <circle cx="218" cy="126" r="9.5" fill="#E2582C" opacity=".75"/>
+    </g>
+    <path d="M163 132 q17 17 34 0" stroke-width="5"/>
+    <path d="M114 84 q-11 5 -10 13" stroke-width="10" stroke="#17414F"/>
+    <path d="M246 84 q11 5 10 13" stroke-width="10" stroke="#17414F"/>
+    <path d="M124 66 h112 a14 14 0 0 1 14 14 v16 a16 16 0 0 1 -16 16 h-108 a16 16 0 0 1 -16 -16 v-16 a14 14 0 0 1 14 -14 Z" fill="#17414F"/>
+    <path d="M133 76 h94 a7 7 0 0 1 7 7 v13 a8 8 0 0 1 -8 8 h-92 a8 8 0 0 1 -8 -8 v-13 a7 7 0 0 1 7 -7 Z" fill="#F0A828"/>
+    <g stroke="#F7EFE0" stroke-linecap="butt">
+      <path d="M146 100 l20 -20" stroke-width="7"/>
+      <path d="M164 100 l20 -20" stroke-width="4.5"/>
+    </g>
+    <path d="M120 62 q4 -54 60 -54 q56 0 60 54 Z" fill="#E2582C"/>
+    <path d="M112 44 h136 a11 11 0 0 1 11 11 v6 a11 11 0 0 1 -11 11 h-136 a11 11 0 0 1 -11 -11 v-6 a11 11 0 0 1 11 -11 Z" fill="#F7EFE0"/>
+    <circle cx="180" cy="12" r="17" fill="#F7EFE0"/>
+  </g>
+</svg>
