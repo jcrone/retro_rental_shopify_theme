@@ -1,19 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "retro_ticker": {
       "type": "retro-ticker",
-      "settings": {}
+      "settings": {
+        "message": "★ Winter 2026–27 season leases open ★ Free mid-season size swap ★ Fitted by real technicians ★ 45 min to Mt. Hood ★ Daily rentals coming soon",
+        "speed": 26
+      }
     },
     "retro_hero": {
       "type": "retro-hero",
       "settings": {
+        "image_url": "https://cdn.shopify.com/s/files/1/0926/4031/3366/files/61d0b2404a32b68f4dc1f7d015e8457b.png?v=15025210",
+        "image_alt": "Kid in ski gear on the mountain",
+        "photo_shift": 140,
+        "focus_x": 50,
+        "focus_y": 35,
+        "height": 560,
+        "focus_x_mobile": 50,
+        "focus_y_mobile": 30,
+        "kicker": "★ Kids Season Leases · Winter 2026–27",
+        "heading": "One price.",
+        "heading_accent": "All winter.",
+        "lead": "Skis, boots and poles for the whole season — fitted properly, swapped free when they hit a growth spurt. Because nobody wants to rent gear at the mountain at 7am. Again.",
+        "note": "Paid in full online · Fitting appointment booked after checkout",
+        "button_1_label": "Reserve a Season Set",
         "button_1_link": "shopify://collections/all",
+        "button_2_label": "How It Works",
         "button_2_link": "#shopify-section-retro_steps"
       }
     },
     "retro_stripes": {
       "type": "retro-stripes",
-      "settings": {}
+      "settings": {
+        "height": 26
+      }
     },
     "retro_facts": {
       "type": "retro-facts",
@@ -23,7 +52,7 @@
           "settings": {
             "icon": "swap",
             "title": "Free size swap",
-            "text": "They grow \u2014 we re-fit, no charge"
+            "text": "They grow — we re-fit, no charge"
           }
         },
         "f2": {
@@ -60,26 +89,45 @@
             "flag": "Most popular",
             "label": "Lease No. 01",
             "title": "Full Season Package",
-            "subtitle": "Skis \u00b7 Boots \u00b7 Poles"
+            "subtitle": "Skis · Boots · Poles",
+            "features": "Junior skis sized to height & ability\nBoots fitted in store\nPoles included\nFree mid-season size exchange\nBindings tested & set to spec",
+            "product": "",
+            "price_text": "Price TBD",
+            "price_suffix": "/ season",
+            "button_label": "Reserve This",
+            "button_link": ""
           }
         },
         "p2": {
           "type": "package",
           "settings": {
+            "featured": false,
+            "flag": "",
             "label": "Lease No. 02",
             "title": "Skis & Boots",
             "subtitle": "Already have poles?",
-            "features": "Junior skis sized to height & ability\nBoots fitted in store\nFree mid-season size exchange\nBindings tested & set to spec"
+            "features": "Junior skis sized to height & ability\nBoots fitted in store\nFree mid-season size exchange\nBindings tested & set to spec",
+            "product": "",
+            "price_text": "Price TBD",
+            "price_suffix": "/ season",
+            "button_label": "Reserve This",
+            "button_link": ""
           }
         },
         "p3": {
           "type": "package",
           "settings": {
+            "featured": false,
+            "flag": "",
             "label": "Add-On",
             "title": "Season Helmet",
             "subtitle": "Add to any lease",
             "features": "Adjustable junior fit\nCertified & sanitized\nSwaps with the size exchange",
-            "button_label": "Add A Helmet"
+            "product": "",
+            "price_text": "Price TBD",
+            "price_suffix": "/ season",
+            "button_label": "Add A Helmet",
+            "button_link": ""
           }
         }
       },
@@ -88,7 +136,11 @@
         "p2",
         "p3"
       ],
-      "settings": {}
+      "settings": {
+        "pill": "★ The Packages",
+        "heading": "Grab your season pass to not renting twice.",
+        "text": "Every lease runs the full winter and includes a free size exchange if your kid outgrows their setup halfway through."
+      }
     },
     "retro_fitting": {
       "type": "retro-fitting",
@@ -104,7 +156,7 @@
           "type": "field",
           "settings": {
             "label": "Height",
-            "example": "4\u2032 3\u2033"
+            "example": "4′ 3″"
           }
         },
         "c3": {
@@ -128,7 +180,16 @@
         "c3",
         "c4"
       ],
-      "settings": {}
+      "settings": {
+        "pill": "★ The Fit",
+        "heading": "Four numbers. One perfect setup.",
+        "text": "<p>Junior gear isn't a t-shirt size. Ski length comes from height, binding release comes from weight, and both get dialed in for how confidently your kid actually skis.</p><p>You tell us at checkout, we pull the right setup before you show up, and a technician confirms it in person. No guessing from a dropdown.</p>",
+        "card_title": "★ Fitting details — collected at checkout",
+        "chips_label": "Skier ability",
+        "chips": "First time, Beginner, Intermediate, Advanced",
+        "chip_selected": "Beginner",
+        "footnote": "Not sure on a number? Ballpark it — we measure and confirm everything at the fitting appointment."
+      }
     },
     "retro_steps": {
       "type": "retro-steps",
@@ -172,7 +233,10 @@
         "s3",
         "s4"
       ],
-      "settings": {}
+      "settings": {
+        "pill": "★ How It Works",
+        "heading": "Four steps to a season on the mountain."
+      }
     },
     "retro_coming_soon": {
       "type": "retro-coming-soon",
@@ -212,7 +276,14 @@
         "i3",
         "i4"
       ],
-      "settings": {}
+      "settings": {
+        "pill": "★ Coming Soon",
+        "heading": "Daily rentals are",
+        "heading_accent": "on the way.",
+        "text": "Just need gear for a Saturday on Hood? Day and weekend rentals with online date booking are coming this winter. Get on the list and you'll book first.",
+        "show_signup": true,
+        "signup_label": "Notify Me"
+      }
     },
     "retro_faq": {
       "type": "retro-faq",
@@ -235,7 +306,7 @@
           "type": "qa",
           "settings": {
             "question": "Do I need to know their boot size?",
-            "answer": "Nope. Give us your best guess online \u2014 we measure and fit properly at the appointment."
+            "answer": "Nope. Give us your best guess online — we measure and fit properly at the appointment."
           }
         },
         "q4": {
@@ -249,7 +320,7 @@
           "type": "qa",
           "settings": {
             "question": "Can I lease for more than one kid?",
-            "answer": "Yes \u2014 add a package per child and enter each kid's fitting details separately at checkout."
+            "answer": "Yes — add a package per child and enter each kid's fitting details separately at checkout."
           }
         },
         "q6": {
@@ -268,7 +339,10 @@
         "q5",
         "q6"
       ],
-      "settings": {}
+      "settings": {
+        "pill": "★ Questions",
+        "heading": "What parents ask us most."
+      }
     }
   },
   "order": [
