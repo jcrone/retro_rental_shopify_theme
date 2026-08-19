@@ -1,5 +1,13 @@
 {%- liquid
   assign s = section.settings
+  assign has_photo = false
+  if s.image != blank or s.image_url != blank
+    assign has_photo = true
+  endif
+  assign alt = s.image_alt
+  if alt == blank
+    assign alt = s.image.alt
+  endif
 -%}
 
 <header
@@ -11,7 +19,7 @@
     min-height: {{ s.height }}px;
   "
 >
-  <div class="bsr-hero__media"{% if s.image == blank %} data-missing{% endif %}>
+  <div class="bsr-hero__media"{% unless has_photo %} data-missing{% endunless %}>
     {%- if s.image != blank -%}
       {{
         s.image
@@ -21,10 +29,12 @@
           fetchpriority: 'high',
           sizes: '100vw',
           widths: '750, 1100, 1500, 1900, 2400, 3000',
-          alt: s.image.alt
+          alt: alt
       }}
+    {%- elsif s.image_url != blank -%}
+      <img src="{{ s.image_url }}" alt="{{ alt | escape }}" loading="eager" fetchpriority="high">
     {%- endif -%}
-    <div class="bsr-hero__fallback">Pick a hero photo in the theme editor</div>
+    <div class="bsr-hero__fallback">Add a hero photo in the theme editor</div>
   </div>
 
   <div class="bsr-hero__inner">
@@ -73,7 +83,21 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Hero photo"
+      "label": "Hero photo",
+      "info": "Upload or pick from Content → Files. Leave empty to use a URL instead."
+    },
+    {
+      "type": "text",
+      "id": "image_url",
+      "label": "…or paste an image URL",
+      "info": "Only used when no photo is picked above. Must be a direct link to the image file."
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alt text",
+      "info": "Describe the photo for screen readers and search.",
+      "default": "Kid in ski gear on the mountain"
     },
     {
       "type": "header",

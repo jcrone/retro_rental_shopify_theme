@@ -35,6 +35,25 @@ to the branch, and commits you push show up in the theme. Which means:
 Prefer a zip? `dist/beaverton-retro-theme.zip` still works with
 **Add theme → Upload zip file**, and `node build.js --zip` rebuilds it.
 
+## Where the hero photo goes
+
+**Customize → Retro hero → Hero photo.** Three ways to fill it:
+
+- **Upload it there.** Click the image field → **Select image** → **Upload**.
+  It lands in the store's file library and is served from Shopify's CDN.
+- **Pick one you already have.** Same field, **Library** tab. Anything under
+  Shopify admin → **Content → Files** shows up here, including images that came
+  with a store preview.
+- **Link to one.** Leave the picker empty and paste a direct image URL into
+  **…or paste an image URL** just below it. The picker wins if both are set.
+
+Uploading beats linking: Shopify then serves responsive sizes, so phones don't
+download a 3000px file. Use the URL field for a quick trial, or for a photo
+hosted somewhere you don't want to duplicate.
+
+There's an **Alt text** field under both — worth filling in for screen readers
+and search.
+
 ## Framing the hero photo
 
 All in **Customize → Retro hero → Framing**, no code:
