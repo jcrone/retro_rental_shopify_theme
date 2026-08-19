@@ -19,8 +19,7 @@ ignored by Shopify.
 1. Shopify admin → **Online Store → Themes → Add theme → Connect from GitHub**.
 2. Authorise the Shopify GitHub app for `jcrone/retro_rental_shopify_theme` if
    it asks.
-3. Pick this repository and the branch
-   **`claude/retro-theme-kid-character-x4lsfj`**.
+3. Pick this repository and the **`main`** branch.
 4. **Customize** the theme, open the **Retro hero** section, and pick your hero
    photo.
 5. Happy with it? **Actions → Publish**.
