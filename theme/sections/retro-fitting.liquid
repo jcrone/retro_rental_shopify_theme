@@ -1,0 +1,89 @@
+<section class="bsr-fitting bsr-section">
+  <div class="bsr-wrap bsr-fitting__grid">
+    <div class="bsr-fitting__copy">
+      {%- if section.settings.pill != blank -%}
+        <span class="bsr-pill bsr-pill--mustard">{{ section.settings.pill }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="bsr-display">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="bsr-formcard">
+      {%- if section.settings.card_title != blank -%}
+        <h4>{{ section.settings.card_title }}</h4>
+      {%- endif -%}
+
+      <div class="bsr-duo">
+        {%- for block in section.blocks limit: 4 -%}
+          {%- if block.type == 'field' -%}
+            <div class="bsr-field" {{ block.shopify_attributes }}>
+              <label>{{ block.settings.label }}</label>
+              <div class="bsr-inp">{{ block.settings.example }}</div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.chips != blank -%}
+        <div class="bsr-field">
+          <label>{{ section.settings.chips_label }}</label>
+          <div class="bsr-chips">
+            {%- assign chips = section.settings.chips | split: ',' -%}
+            {%- for chip in chips -%}
+              {%- assign name = chip | strip -%}
+              <span class="bsr-chip{% if name == section.settings.chip_selected %} bsr-chip--on{% endif %}">{{ name }}</span>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.footnote != blank -%}
+        <p class="bsr-fnote">{{ section.settings.footnote }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retro fitting band",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "pill", "label": "Eyebrow", "default": "★ The Fit" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Four numbers. One perfect setup." },
+    { "type": "richtext", "id": "text", "label": "Copy", "default": "<p>Junior gear isn't a t-shirt size. Ski length comes from height, binding release comes from weight, and both get dialed in for how confidently your kid actually skis.</p><p>You tell us at checkout, we pull the right setup before you show up, and a technician confirms it in person. No guessing from a dropdown.</p>" },
+    { "type": "header", "content": "Preview card" },
+    { "type": "paragraph", "content": "This card is a picture of what you collect at checkout, not a working form." },
+    { "type": "text", "id": "card_title", "label": "Card title", "default": "★ Fitting details — collected at checkout" },
+    { "type": "text", "id": "chips_label", "label": "Chips label", "default": "Skier ability" },
+    { "type": "text", "id": "chips", "label": "Chips", "info": "Comma separated", "default": "First time, Beginner, Intermediate, Advanced" },
+    { "type": "text", "id": "chip_selected", "label": "Chip shown as selected", "default": "Beginner" },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "Not sure on a number? Ballpark it — we measure and confirm everything at the fitting appointment." }
+  ],
+  "blocks": [
+    {
+      "type": "field",
+      "name": "Field",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Age" },
+        { "type": "text", "id": "example", "label": "Example value", "default": "8 years" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retro fitting band",
+      "blocks": [
+        { "type": "field", "settings": { "label": "Age", "example": "8 years" } },
+        { "type": "field", "settings": { "label": "Height", "example": "4′ 3″" } },
+        { "type": "field", "settings": { "label": "Weight", "example": "62 lbs" } },
+        { "type": "field", "settings": { "label": "Boot size (if known)", "example": "Youth 3" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

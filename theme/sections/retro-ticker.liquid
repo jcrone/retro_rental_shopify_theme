@@ -1,0 +1,31 @@
+<div class="bsr-ticker">
+  <div class="bsr-ticker__track" style="animation-duration: {{ section.settings.speed }}s;">
+    <span>{{ section.settings.message }}</span>
+    <span aria-hidden="true">{{ section.settings.message }}</span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Retro ticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Message",
+      "default": "★ Winter 2026–27 season leases open ★ Free mid-season size swap ★ Fitted by real technicians ★ 45 min to Mt. Hood ★ Daily rentals coming soon"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "s",
+      "label": "Seconds per loop",
+      "default": 26
+    }
+  ],
+  "presets": [{ "name": "Retro ticker" }]
+}
+{% endschema %}

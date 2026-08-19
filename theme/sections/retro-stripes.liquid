@@ -1,0 +1,20 @@
+<div class="bsr-stripes" style="height: {{ section.settings.height }}px;"></div>
+
+{% schema %}
+{
+  "name": "Retro stripe divider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "height",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Height",
+      "default": 26
+    }
+  ],
+  "presets": [{ "name": "Retro stripe divider" }]
+}
+{% endschema %}

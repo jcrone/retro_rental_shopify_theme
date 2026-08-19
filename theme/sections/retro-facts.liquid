@@ -1,0 +1,63 @@
+<div class="bsr-facts">
+  <div class="bsr-wrap bsr-facts__in">
+    {%- for block in section.blocks -%}
+      <div class="bsr-fact" {{ block.shopify_attributes }}>
+        <div class="bsr-fact__ic">
+          {%- case block.settings.icon -%}
+            {%- when 'swap' -%}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7EFE0" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 014-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+            {%- when 'pin' -%}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7EFE0" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            {%- when 'check' -%}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7EFE0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>
+            {%- else -%}
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F7EFE0" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.8-3.8a6 6 0 01-7.9 7.9l-6.9 6.9a2.1 2.1 0 01-3-3l6.9-6.9a6 6 0 017.9-7.9l-3.8 3.8z"/></svg>
+          {%- endcase -%}
+        </div>
+        <div>
+          <b>{{ block.settings.title }}</b>
+          <span>{{ block.settings.text }}</span>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Retro facts bar",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Fact",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "swap", "label": "Swap arrows" },
+            { "value": "wrench", "label": "Wrench" },
+            { "value": "pin", "label": "Map pin" },
+            { "value": "check", "label": "Check" }
+          ],
+          "default": "swap"
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Free size swap" },
+        { "type": "text", "id": "text", "label": "Text", "default": "They grow — we re-fit, no charge" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retro facts bar",
+      "blocks": [
+        { "type": "fact", "settings": { "icon": "swap", "title": "Free size swap", "text": "They grow — we re-fit, no charge" } },
+        { "type": "fact", "settings": { "icon": "wrench", "title": "Fitted by a technician", "text": "Bindings set to weight & ability" } },
+        { "type": "fact", "settings": { "icon": "pin", "title": "Pick up in Beaverton", "text": "Skip the rental line at the mountain" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

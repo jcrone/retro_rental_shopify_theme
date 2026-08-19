@@ -1,0 +1,56 @@
+<section class="bsr-section">
+  <div class="bsr-wrap">
+    {%- if section.settings.pill != blank or section.settings.heading != blank -%}
+      <div class="bsr-sechead">
+        {%- if section.settings.pill != blank -%}
+          <span class="bsr-pill">{{ section.settings.pill }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="bsr-display">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="bsr-faq">
+      {%- for block in section.blocks -%}
+        <div class="bsr-qa" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.question }}</h3>
+          <p>{{ block.settings.answer }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retro FAQ",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "pill", "label": "Eyebrow", "default": "★ Questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What parents ask us most." }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What if my kid grows mid-season?" },
+        { "type": "textarea", "id": "answer", "label": "Answer", "default": "Bring the setup in and we'll re-fit them into the next size up. Included in every lease." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retro FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "question": "What if my kid grows mid-season?", "answer": "Bring the setup in and we'll re-fit them into the next size up. Included in every lease." } },
+        { "type": "qa", "settings": { "question": "How long is the season?", "answer": "From pickup through the posted spring return date. Exact dates are confirmed in your reservation email." } },
+        { "type": "qa", "settings": { "question": "Do I need to know their boot size?", "answer": "Nope. Give us your best guess online — we measure and fit properly at the appointment." } },
+        { "type": "qa", "settings": { "question": "What if the gear gets damaged?", "answer": "Normal wear from a winter of skiing is expected. Damage terms are spelled out in the rental agreement you sign at fitting." } },
+        { "type": "qa", "settings": { "question": "Can I lease for more than one kid?", "answer": "Yes — add a package per child and enter each kid's fitting details separately at checkout." } },
+        { "type": "qa", "settings": { "question": "When do daily rentals open?", "answer": "We're building them now. Join the notify list and you'll hear the moment booking goes live." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

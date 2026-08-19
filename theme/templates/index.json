@@ -1,0 +1,285 @@
+{
+  "sections": {
+    "retro_ticker": {
+      "type": "retro-ticker",
+      "settings": {}
+    },
+    "retro_hero": {
+      "type": "retro-hero",
+      "settings": {
+        "button_1_link": "shopify://collections/all",
+        "button_2_link": "#shopify-section-retro_steps"
+      }
+    },
+    "retro_stripes": {
+      "type": "retro-stripes",
+      "settings": {}
+    },
+    "retro_facts": {
+      "type": "retro-facts",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "icon": "swap",
+            "title": "Free size swap",
+            "text": "They grow \u2014 we re-fit, no charge"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "icon": "wrench",
+            "title": "Fitted by a technician",
+            "text": "Bindings set to weight & ability"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "icon": "pin",
+            "title": "Pick up in Beaverton",
+            "text": "Skip the rental line at the mountain"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "settings": {}
+    },
+    "retro_packages": {
+      "type": "retro-packages",
+      "blocks": {
+        "p1": {
+          "type": "package",
+          "settings": {
+            "featured": true,
+            "flag": "Most popular",
+            "label": "Lease No. 01",
+            "title": "Full Season Package",
+            "subtitle": "Skis \u00b7 Boots \u00b7 Poles"
+          }
+        },
+        "p2": {
+          "type": "package",
+          "settings": {
+            "label": "Lease No. 02",
+            "title": "Skis & Boots",
+            "subtitle": "Already have poles?",
+            "features": "Junior skis sized to height & ability\nBoots fitted in store\nFree mid-season size exchange\nBindings tested & set to spec"
+          }
+        },
+        "p3": {
+          "type": "package",
+          "settings": {
+            "label": "Add-On",
+            "title": "Season Helmet",
+            "subtitle": "Add to any lease",
+            "features": "Adjustable junior fit\nCertified & sanitized\nSwaps with the size exchange",
+            "button_label": "Add A Helmet"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {}
+    },
+    "retro_fitting": {
+      "type": "retro-fitting",
+      "blocks": {
+        "c1": {
+          "type": "field",
+          "settings": {
+            "label": "Age",
+            "example": "8 years"
+          }
+        },
+        "c2": {
+          "type": "field",
+          "settings": {
+            "label": "Height",
+            "example": "4\u2032 3\u2033"
+          }
+        },
+        "c3": {
+          "type": "field",
+          "settings": {
+            "label": "Weight",
+            "example": "62 lbs"
+          }
+        },
+        "c4": {
+          "type": "field",
+          "settings": {
+            "label": "Boot size (if known)",
+            "example": "Youth 3"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {}
+    },
+    "retro_steps": {
+      "type": "retro-steps",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "Reserve online",
+            "text": "Pick a package, enter your kid's fitting details, pay for the season in full."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "Book the fitting",
+            "text": "We email you to schedule a fitting appointment at the Beaverton shop."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "Ski all winter",
+            "text": "Gear lives at your house all season. Growth spurt? Bring it in and swap."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "Return in spring",
+            "text": "Drop it back by the season return date. We handle the tune and the storage."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {}
+    },
+    "retro_coming_soon": {
+      "type": "retro-coming-soon",
+      "blocks": {
+        "i1": {
+          "type": "item",
+          "settings": {
+            "title": "Adult ski packages",
+            "tag": "Coming soon"
+          }
+        },
+        "i2": {
+          "type": "item",
+          "settings": {
+            "title": "Snowboard & boots",
+            "tag": "Coming soon"
+          }
+        },
+        "i3": {
+          "type": "item",
+          "settings": {
+            "title": "Jackets, pants & goggles",
+            "tag": "Coming soon"
+          }
+        },
+        "i4": {
+          "type": "item",
+          "settings": {
+            "title": "Weekend multi-day rates",
+            "tag": "Coming soon"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ],
+      "settings": {}
+    },
+    "retro_faq": {
+      "type": "retro-faq",
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "question": "What if my kid grows mid-season?",
+            "answer": "Bring the setup in and we'll re-fit them into the next size up. Included in every lease."
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "question": "How long is the season?",
+            "answer": "From pickup through the posted spring return date. Exact dates are confirmed in your reservation email."
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "question": "Do I need to know their boot size?",
+            "answer": "Nope. Give us your best guess online \u2014 we measure and fit properly at the appointment."
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "question": "What if the gear gets damaged?",
+            "answer": "Normal wear from a winter of skiing is expected. Damage terms are spelled out in the rental agreement you sign at fitting."
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "question": "Can I lease for more than one kid?",
+            "answer": "Yes \u2014 add a package per child and enter each kid's fitting details separately at checkout."
+          }
+        },
+        "q6": {
+          "type": "qa",
+          "settings": {
+            "question": "When do daily rentals open?",
+            "answer": "We're building them now. Join the notify list and you'll hear the moment booking goes live."
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "retro_ticker",
+    "retro_hero",
+    "retro_stripes",
+    "retro_facts",
+    "retro_packages",
+    "retro_fitting",
+    "retro_steps",
+    "retro_coming_soon",
+    "retro_faq"
+  ]
+}

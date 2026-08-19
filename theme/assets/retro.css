@@ -1,0 +1,771 @@
+/* ============================================================
+   BEAVERTON SKI RENTALS — RETRO THEME PACK  (v2)
+
+   This file ships with the theme. If you are layering the look
+   onto a different theme instead, paste shopify/custom-css.css into
+   Theme settings → Custom CSS.
+
+   What changed from v1
+     · no geometric decoration anywhere. The kid photo carries the top
+       of the page; lift-ticket, stripe and halftone motifs carry the rest
+     · new full-bleed photo hero with a warm 70s colour grade and a
+       paper copy-panel that stays legible over any crop
+     · the section components (ticker, lift tickets, facts, steps,
+       fitting card, FAQ) now live here too, so the Custom Liquid
+       sections in this folder work with nothing else to install
+     · every custom class is prefixed `bsr-` so nothing collides with
+       the theme
+
+   The @import MUST stay on the very first line or the fonts
+   will not load.
+   ============================================================ */
+
+/* Fonts are loaded with a <link> in layout/theme.liquid. */
+
+:root,
+.color-scheme-1, .color-scheme-2, .color-scheme-3,
+.color-scheme-4, .color-scheme-5 {
+  --bsr-paper:  #F7EFE0;
+  --bsr-paper2: #EFE1C8;
+  --bsr-orange: #E2582C;
+  --bsr-mustard:#F0A828;
+  --bsr-rust:   #A8321C;
+  --bsr-teal:   #17414F;
+  --bsr-teal2:  #0E2B35;
+  --bsr-cocoa:  #3B2416;
+  --bsr-ink:    #2A1A10;
+  --bsr-hairline: rgba(42,26,16,0.16);
+}
+
+/* ---------- 1. TYPE ------------------------------------------------ */
+
+h0, h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4,
+.card__heading, .banner__heading, .rich-text__heading,
+.collection__title, .product__title, .footer-block__heading,
+.bsr-display {
+  font-family: 'Archivo Black', 'Arial Black', Impact, sans-serif !important;
+  font-weight: 400 !important;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.98;
+}
+
+body, .rte, p, li, .product__description, .field__input, .select__select {
+  font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Subtle printed-paper grain over the whole storefront */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.045;
+  background-image: radial-gradient(#3B2416 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+/* shared width for the pasted-in sections */
+.bsr-wrap { max-width: 1180px; margin: 0 auto; padding: 0 26px; }
+.bsr-section { padding: 78px 0; }
+
+/* ---------- 2. ANNOUNCEMENT BAR ------------------------------------ */
+
+.announcement-bar,
+.utility-bar {
+  background: var(--bsr-orange) !important;
+  color: var(--bsr-paper) !important;
+  border-bottom: 3px solid var(--bsr-cocoa);
+}
+.announcement-bar__message,
+.announcement-bar__link {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 12.5px !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bsr-paper) !important;
+}
+
+/* ---------- 3. HEADER ---------------------------------------------- */
+
+.header-wrapper {
+  border-bottom: 3px solid var(--bsr-cocoa) !important;
+}
+.header__menu-item,
+.header__menu-item span {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.header__menu-item:hover span { color: var(--bsr-orange); }
+
+/* ---------- 4. BUTTONS (the signature retro move) ------------------ */
+
+.button, .shopify-payment-button__button--unbranded,
+.product-form__submit, .cart__checkout-button, .shopify-challenge__button,
+.bsr-btn {
+  display: inline-block;
+  font-family: 'Archivo Black', sans-serif !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px !important;
+  padding: 15px 26px !important;
+  border: 3px solid var(--bsr-cocoa) !important;
+  border-radius: 4px !important;
+  box-shadow: 4px 4px 0 var(--bsr-cocoa) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+  min-height: auto;
+  text-decoration: none;
+  cursor: pointer;
+}
+.button::after, .button::before { display: none !important; }
+
+.button:hover,  .bsr-btn:hover  { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 var(--bsr-cocoa) !important; }
+.button:active, .bsr-btn:active { transform: translate(4px, 4px);   box-shadow: 0 0 0 var(--bsr-cocoa) !important; }
+
+.button--primary, .product-form__submit, .cart__checkout-button,
+.bsr-btn--orange {
+  background: var(--bsr-orange) !important;
+  color: var(--bsr-paper) !important;
+}
+.button--secondary, .bsr-btn--paper {
+  background: var(--bsr-paper) !important;
+  color: var(--bsr-cocoa) !important;
+}
+.bsr-btn--mustard {
+  background: var(--bsr-mustard) !important;
+  color: var(--bsr-cocoa) !important;
+}
+.bsr-btn--sm {
+  font-size: 12px !important;
+  padding: 11px 18px !important;
+  box-shadow: 3px 3px 0 var(--bsr-cocoa) !important;
+}
+
+/* ---------- 5. PRODUCT CARDS AS LIFT TICKETS ----------------------- */
+
+.card-wrapper .card,
+.card.card--standard,
+.card.card--card {
+  background: var(--bsr-paper) !important;
+  border: 3px solid var(--bsr-cocoa) !important;
+  border-radius: 6px !important;
+  box-shadow: 7px 7px 0 var(--bsr-cocoa) !important;
+  overflow: hidden;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.card-wrapper:hover .card {
+  transform: translate(-2px, -2px);
+  box-shadow: 9px 9px 0 var(--bsr-orange) !important;
+}
+.card__inner { border-radius: 0 !important; }
+
+/* dashed tear-line between the image and the card text */
+.card__content {
+  border-top: 3px dashed var(--bsr-cocoa);
+  padding: 18px 20px 20px !important;
+  position: relative;
+}
+/* punch notches at the tear line */
+.card__content::before,
+.card__content::after {
+  content: "";
+  position: absolute;
+  top: -13px;
+  width: 20px; height: 20px;
+  background: var(--bsr-paper2);
+  border: 3px solid var(--bsr-cocoa);
+  border-radius: 50%;
+}
+.card__content::before { left: -13px; }
+.card__content::after  { right: -13px; }
+
+.card__heading a { font-size: 19px; }
+.price, .price-item {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 18px;
+  letter-spacing: 0.01em;
+}
+.price--on-sale .price-item--regular { color: rgba(59,36,22,0.5); }
+
+/* "Coming soon" / sold-out badge */
+.badge {
+  font-family: 'Archivo Black', sans-serif !important;
+  font-size: 10px !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--bsr-mustard) !important;
+  color: var(--bsr-cocoa) !important;
+  border: 2.5px solid var(--bsr-cocoa) !important;
+  border-radius: 99px !important;
+  padding: 5px 11px !important;
+}
+
+/* ---------- 6. SECTION HEADINGS & TEXT ACCENTS --------------------- */
+
+.title-wrapper-with-link .title,
+.collection__title .title,
+.section-header h2 {
+  font-size: clamp(30px, 4vw, 46px) !important;
+}
+
+.bsr-sechead { max-width: 640px; margin-bottom: 42px; }
+.bsr-sechead h2 { font-size: clamp(30px, 4.4vw, 46px); margin: 0 0 14px; }
+.bsr-sechead p  { font-size: 16.5px; color: rgba(42,26,16,0.68); margin: 0; }
+
+/* Star-pill eyebrow: <span class="bsr-pill">★ The Packages</span> */
+.bsr-pill {
+  display: inline-block;
+  background: var(--bsr-teal);
+  color: var(--bsr-paper);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 13px;
+  border: 2.5px solid var(--bsr-cocoa);
+  border-radius: 99px;
+  margin-bottom: 14px;
+}
+.bsr-pill--mustard { background: var(--bsr-mustard); color: var(--bsr-cocoa); }
+
+/* Mustard highlight behind a word: <span class="bsr-hl">all winter</span> */
+.bsr-hl {
+  background: var(--bsr-mustard);
+  color: var(--bsr-cocoa);
+  padding: 0 0.18em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* ---------- 7. FOUR-COLOR STRIPE DIVIDER --------------------------- */
+/* Custom Liquid section →  <div class="bsr-stripes"></div>           */
+
+.bsr-stripes {
+  height: 26px;
+  border-top: 3px solid var(--bsr-cocoa);
+  border-bottom: 3px solid var(--bsr-cocoa);
+  background: linear-gradient(
+    to right,
+    var(--bsr-rust)    0% 25%,
+    var(--bsr-orange) 25% 50%,
+    var(--bsr-mustard)50% 75%,
+    var(--bsr-teal)   75% 100%
+  );
+}
+
+/* ---------- 8. THE HERO — KID PHOTO, RETRO-GRADED ------------------ */
+/* Two ways to use this:
+     A. keep the theme's own Image banner / Hero section and give it
+        the class `bsr-hero` (Section settings → CSS class), or
+     B. paste shopify/section-hero-kid.liquid into a Custom Liquid
+        section and swap in your image URL.
+   Either way the rules below do the retro treatment.                 */
+
+.bsr-hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--bsr-teal);
+  color: var(--bsr-paper);
+  border-bottom: 3px solid var(--bsr-cocoa);
+  overflow: hidden;
+  padding: 0;
+}
+
+/* the photo */
+.bsr-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--bsr-teal);
+}
+.bsr-hero__media img,
+.bsr-hero .banner__media img,
+.bsr-hero .hero__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  /* Framing — the only two knobs you should need.
+
+     --bsr-hero-shift widens the image box past the right edge of the
+     hero while it stays pinned to the left, which slides whoever is in
+     the middle of the photo to the right, clear of the copy panel.
+     Bigger number = further right. It can never open a gap, because
+     the box is always at least as wide as the hero.
+
+     --bsr-hero-focus picks which part of the photo survives the crop
+     (first value horizontal, second vertical).                        */
+  width: calc(100% + var(--bsr-hero-shift, 140px));
+  object-position: var(--bsr-hero-focus, 50% 35%);
+
+  /* warm a modern photo into a 1970s palette */
+  filter: saturate(0.85) contrast(1.06) brightness(1.03) sepia(0.32);
+}
+
+/* readability scrim under the copy panel (paints above the photo) */
+.bsr-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg,
+              rgba(45,28,18,0.74) 0%,
+              rgba(45,28,18,0.30) 42%,
+              rgba(45,28,18,0.00) 64%);
+}
+/* colour grade — mustard in the lights, teal in the shadows */
+.bsr-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  mix-blend-mode: multiply;
+  background: linear-gradient(200deg,
+              rgba(240,168,40,0.40) 0%,
+              rgba(226,88,44,0.24) 45%,
+              rgba(23,65,79,0.40) 100%);
+}
+/* printed halftone across the whole hero */
+.bsr-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.13;
+  background-image: radial-gradient(var(--bsr-cocoa) 1.2px, transparent 1.3px);
+  background-size: 5px 5px;
+}
+
+/* The panel sits low and hard left so a wide screen keeps the middle
+   of the photo — where the kid is — completely clear. The container is
+   wider than the rest of the page on purpose: it is what pulls the
+   panel out toward the left edge on a big monitor. */
+.bsr-hero__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 56px clamp(22px, 4vw, 60px) 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 500px);
+  align-content: end;
+}
+
+/* the copy sits on a paper ticket so it survives any crop */
+.bsr-hero__panel {
+  background: var(--bsr-paper);
+  color: var(--bsr-cocoa);
+  border: 4px solid var(--bsr-cocoa);
+  border-radius: 8px;
+  box-shadow: 10px 10px 0 var(--bsr-rust);
+  padding: 28px 30px 26px;
+}
+.bsr-hero h1 {
+  font-size: clamp(34px, 4.2vw, 52px);
+  margin: 0 0 16px;
+  color: var(--bsr-cocoa);
+}
+.bsr-hero__out {
+  color: var(--bsr-orange);
+  text-shadow: 4px 4px 0 var(--bsr-mustard);
+}
+.bsr-hero__lead {
+  font-size: 16px;
+  color: rgba(59,36,22,0.78);
+  margin: 0 0 24px;
+}
+.bsr-hero__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--bsr-mustard);
+  color: var(--bsr-cocoa);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 13px;
+  border-radius: 99px;
+  border: 2.5px solid var(--bsr-cocoa);
+  margin-bottom: 18px;
+}
+.bsr-hero__btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.bsr-hero__note {
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 2px dashed rgba(59,36,22,0.25);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgba(59,36,22,0.55);
+}
+
+/* shown only while the hero photo is missing */
+.bsr-hero__fallback {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  background: var(--bsr-teal);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247,239,224,0.5);
+}
+.bsr-hero__media[data-missing] .bsr-hero__fallback { display: flex; }
+
+/* ---------- 9. TICKER ---------------------------------------------- */
+
+.bsr-ticker {
+  background: var(--bsr-orange);
+  color: var(--bsr-paper);
+  overflow: hidden;
+  padding: 10px 0;
+  border-bottom: 3px solid var(--bsr-cocoa);
+}
+.bsr-ticker__track {
+  display: flex;
+  white-space: nowrap;
+  animation: bsr-slide 26s linear infinite;
+  font-family: 'Archivo Black', 'Arial Black', sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.bsr-ticker__track span { display: flex; align-items: center; gap: 34px; padding-right: 34px; }
+@keyframes bsr-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .bsr-ticker__track { animation: none; } }
+
+/* ---------- 10. FACTS ROW ------------------------------------------ */
+
+.bsr-facts { background: var(--bsr-paper2); border-bottom: 3px solid var(--bsr-cocoa); }
+.bsr-facts__in { display: grid; grid-template-columns: repeat(3, 1fr); }
+.bsr-fact {
+  padding: 26px 24px;
+  border-left: 3px solid var(--bsr-cocoa);
+  display: flex; gap: 14px; align-items: center;
+}
+.bsr-fact:first-child { border-left: 0; }
+.bsr-fact__ic {
+  width: 44px; height: 44px; flex: 0 0 44px;
+  background: var(--bsr-orange);
+  border: 2.5px solid var(--bsr-cocoa);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.bsr-fact b {
+  display: block;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 13.5px; text-transform: uppercase; letter-spacing: 0.02em;
+}
+.bsr-fact span { font-size: 13px; color: rgba(42,26,16,0.65); }
+
+/* ---------- 11. LIFT-TICKET PACKAGE CARDS -------------------------- */
+
+.bsr-tickets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.bsr-ticket {
+  background: var(--bsr-paper);
+  border: 3px solid var(--bsr-cocoa);
+  border-radius: 6px;
+  box-shadow: 7px 7px 0 var(--bsr-cocoa);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.bsr-ticket--hot { box-shadow: 7px 7px 0 var(--bsr-orange); }
+.bsr-ticket__top {
+  padding: 20px 22px;
+  border-bottom: 3px dashed var(--bsr-cocoa);
+  position: relative;
+}
+.bsr-ticket--hot .bsr-ticket__top { background: var(--bsr-mustard); }
+.bsr-ticket__no {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(42,26,16,0.55); margin-bottom: 8px;
+}
+.bsr-ticket__top h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 25px; text-transform: uppercase;
+  line-height: 1; letter-spacing: -0.01em; margin: 0;
+}
+.bsr-ticket__sub { font-size: 13.5px; color: rgba(42,26,16,0.68); margin: 8px 0 0; }
+.bsr-notch {
+  position: absolute; width: 20px; height: 20px;
+  background: var(--bsr-paper);
+  border: 3px solid var(--bsr-cocoa);
+  border-radius: 50%; bottom: -13px;
+}
+.bsr-notch--l { left: -13px; }
+.bsr-notch--r { right: -13px; }
+.bsr-ticket__body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+.bsr-ticket__body ul { list-style: none; margin: 0 0 20px; padding: 0; }
+.bsr-ticket__body li {
+  font-size: 13.5px; padding: 8px 0 8px 25px; position: relative;
+  border-bottom: 1px dotted var(--bsr-hairline);
+}
+.bsr-ticket__body li:last-child { border-bottom: 0; }
+.bsr-ticket__body li::before {
+  content: ""; position: absolute; left: 2px; top: 9px;
+  width: 13px; height: 13px;
+  background: var(--bsr-orange);
+  border: 2px solid var(--bsr-cocoa);
+  border-radius: 3px;
+}
+.bsr-amt {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 22px; text-transform: uppercase; color: rgba(42,26,16,0.5);
+}
+.bsr-per {
+  font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-weight: 700; color: rgba(42,26,16,0.5);
+}
+.bsr-ticket__body .bsr-btn { margin-top: 16px; text-align: center; display: block; }
+.bsr-flag {
+  position: absolute; top: 14px; right: 10px;
+  background: var(--bsr-rust); color: var(--bsr-paper);
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 6px 12px; border: 2.5px solid var(--bsr-cocoa);
+  transform: rotate(3deg); z-index: 4;
+}
+
+/* ---------- 12. FITTING BAND + FORM CARD --------------------------- */
+
+.bsr-fitting {
+  background: var(--bsr-teal); color: var(--bsr-paper);
+  border-top: 3px solid var(--bsr-cocoa);
+  border-bottom: 3px solid var(--bsr-cocoa);
+}
+.bsr-fitting__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+.bsr-fitting h2 { font-size: clamp(28px, 4vw, 42px); margin: 0 0 16px; }
+/* scoped to the copy column — the form card sits on paper and keeps
+   its own dark text */
+.bsr-fitting__copy p { color: rgba(247,239,224,0.8); font-size: 16px; margin: 0 0 16px; }
+
+.bsr-formcard {
+  background: var(--bsr-paper); color: var(--bsr-ink);
+  border: 3px solid var(--bsr-cocoa); border-radius: 6px;
+  box-shadow: 9px 9px 0 var(--bsr-rust); padding: 26px;
+}
+.bsr-formcard h4 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  margin: 0 0 20px; color: var(--bsr-orange);
+}
+.bsr-field { margin-bottom: 15px; }
+.bsr-field label {
+  display: block; font-size: 11.5px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px;
+}
+.bsr-inp {
+  background: var(--bsr-paper2);
+  border: 2.5px solid var(--bsr-cocoa);
+  border-radius: 4px; padding: 11px 13px;
+  font-size: 14px; font-weight: 600; color: rgba(42,26,16,0.6);
+}
+.bsr-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bsr-chips { display: flex; gap: 7px; flex-wrap: wrap; }
+.bsr-chip {
+  border: 2.5px solid var(--bsr-cocoa); border-radius: 99px;
+  padding: 8px 14px; font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  background: var(--bsr-paper2); color: rgba(42,26,16,0.6);
+}
+.bsr-chip--on { background: var(--bsr-orange); color: var(--bsr-paper); }
+.bsr-fnote {
+  font-size: 12px; color: rgba(42,26,16,0.6);
+  margin: 14px 0 0; padding-top: 13px;
+  border-top: 2px dashed var(--bsr-hairline);
+}
+
+/* ---------- 13. NUMBERED "HOW IT WORKS" STEPS ---------------------- */
+/* Works with the pasted section, and also restyles the theme's own
+   Multicolumn section if you'd rather use that.                      */
+
+.bsr-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.bsr-step {
+  background: var(--bsr-paper2);
+  border: 3px solid var(--bsr-cocoa);
+  border-radius: 6px; padding: 24px;
+}
+.bsr-step:nth-child(even) { background: var(--bsr-mustard); }
+.bsr-step__num {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 42px; line-height: 1;
+  color: var(--bsr-orange);
+  -webkit-text-stroke: 2px var(--bsr-cocoa);
+  margin-bottom: 12px; display: block;
+}
+.bsr-step h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 16px; text-transform: uppercase; margin: 0 0 8px;
+}
+.bsr-step p { font-size: 13.5px; color: rgba(42,26,16,0.7); margin: 0; }
+
+.multicolumn-card {
+  background: var(--bsr-paper2) !important;
+  border: 3px solid var(--bsr-cocoa);
+  border-radius: 6px;
+  padding: 22px;
+}
+.multicolumn-list__item:nth-child(even) .multicolumn-card {
+  background: var(--bsr-mustard) !important;
+}
+.multicolumn-card__info .h3 {
+  font-size: 40px !important;
+  color: var(--bsr-orange);
+  -webkit-text-stroke: 2px var(--bsr-cocoa);
+}
+
+/* ---------- 14. COMING SOON BAND ----------------------------------- */
+
+.bsr-soon { background: var(--bsr-cocoa); color: var(--bsr-paper); border-top: 3px solid var(--bsr-cocoa); }
+.bsr-soon__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+.bsr-soon h2 { font-size: clamp(28px, 4.2vw, 44px); margin: 0 0 16px; }
+.bsr-soon__hl { color: var(--bsr-mustard); }
+.bsr-soon__copy { color: rgba(247,239,224,0.75); font-size: 16px; margin: 0 0 24px; }
+.bsr-signup { display: flex; gap: 11px; max-width: 440px; }
+.bsr-signup .bsr-inp {
+  flex: 1; background: rgba(247,239,224,0.1);
+  border-color: var(--bsr-paper); color: rgba(247,239,224,0.6);
+}
+.bsr-soon__list { display: grid; gap: 11px; }
+.bsr-soon__item {
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  background: rgba(247,239,224,0.07);
+  border: 2.5px solid rgba(247,239,224,0.3);
+  border-radius: 5px; padding: 15px 18px;
+}
+.bsr-soon__item b { font-family: 'Archivo Black', sans-serif; font-size: 14px; text-transform: uppercase; }
+.bsr-soon__item span {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  background: var(--bsr-mustard); color: var(--bsr-cocoa);
+  padding: 4px 9px; border-radius: 99px; white-space: nowrap;
+}
+
+/* ---------- 15. FAQ ------------------------------------------------ */
+
+.bsr-faq { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 34px; }
+.bsr-qa {
+  background: var(--bsr-paper2);
+  border: 3px solid var(--bsr-cocoa);
+  border-radius: 6px; padding: 20px 22px;
+}
+.bsr-qa h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 15px; text-transform: uppercase; margin: 0 0 8px;
+}
+.bsr-qa p { font-size: 13.5px; color: rgba(42,26,16,0.72); margin: 0; }
+
+/* ---------- 16. EMAIL SIGNUP --------------------------------------- */
+
+.newsletter-form__field-wrapper .field__input {
+  background: var(--bsr-paper2);
+  border: 2.5px solid var(--bsr-cocoa) !important;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.newsletter-form__field-wrapper .field::after,
+.field::after, .select::after { box-shadow: none !important; }
+
+/* ---------- 17. FOOTER --------------------------------------------- */
+
+.footer {
+  background: var(--bsr-teal2) !important;
+  color: rgba(247,239,224,0.72) !important;
+  border-top: 3px solid var(--bsr-cocoa);
+}
+.footer-block__heading {
+  color: var(--bsr-mustard) !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.16em;
+}
+.footer a, .footer p, .footer .list-menu__item {
+  color: rgba(247,239,224,0.72) !important;
+  font-size: 13.5px;
+}
+.footer a:hover { color: var(--bsr-mustard) !important; }
+.footer__content-bottom {
+  border-top: 2px solid rgba(247,239,224,0.18);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 11.5px;
+}
+
+/* ---------- 18. THE DRAWN KID (optional accent) -------------------- */
+/* assets/kid-skier.svg and assets/logo-badge.svg — line-art versions
+   of the same idea. The hero uses your photo; these are for the logo
+   badge, the 404 page, an empty cart, or wherever a mark helps.      */
+
+.bsr-kid {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
+  filter: drop-shadow(9px 9px 0 rgba(59,36,22,0.35));
+}
+.bsr-kid--sm { max-width: 170px; filter: none; }
+
+/* ---------- 19. RESPONSIVE ----------------------------------------- */
+
+@media screen and (max-width: 989px) {
+  .bsr-hero { min-height: 480px; }
+  .bsr-hero__inner { padding: 48px 20px 56px; max-width: none; }
+  .bsr-hero__panel { padding: 24px 22px; box-shadow: 8px 8px 0 var(--bsr-rust); }
+  .bsr-hero__media::before {
+    background: linear-gradient(180deg,
+                rgba(45,28,18,0.20) 0%,
+                rgba(45,28,18,0.55) 100%);
+  }
+  .bsr-section { padding: 56px 0; }
+  .bsr-tickets, .bsr-steps, .bsr-faq, .bsr-facts__in { grid-template-columns: 1fr; }
+  .bsr-fitting__grid, .bsr-soon__grid { grid-template-columns: 1fr; gap: 34px; }
+  .bsr-fact { border-left: 0; border-top: 3px solid var(--bsr-cocoa); }
+  .bsr-fact:first-child { border-top: 0; }
+  .bsr-kid { max-width: 300px; }
+}
+
+/* on a phone, stack: photo strip on top, paper panel lapping over it,
+   so the kid is still the first thing you see */
+@media screen and (max-width: 749px) {
+  .bsr-hero { display: block; min-height: 0; background: var(--bsr-paper); }
+  .bsr-hero__media { position: relative; height: 300px; }
+  /* the panel sits below the photo on a phone, so nothing needs
+     sliding out of its way */
+  .bsr-hero__media img {
+    width: 100%;
+    object-position: var(--bsr-hero-focus-mobile, 50% 30%);
+  }
+  .bsr-hero__inner { padding: 0 16px 44px; margin-top: -44px; }
+  .bsr-hero__panel { box-shadow: 7px 7px 0 var(--bsr-rust); }
+  .bsr-hero__kicker { font-size: 10.5px; letter-spacing: 0.1em; }
+}
+
+@media screen and (max-width: 749px) {
+  .button, .bsr-btn {
+    box-shadow: 3px 3px 0 var(--bsr-cocoa) !important;
+    padding: 13px 20px !important;
+    font-size: 13px !important;
+  }
+  .card-wrapper .card { box-shadow: 5px 5px 0 var(--bsr-cocoa) !important; }
+  .card__content::before, .card__content::after { display: none; }
+}

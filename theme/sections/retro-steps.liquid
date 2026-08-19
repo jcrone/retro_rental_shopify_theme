@@ -1,0 +1,56 @@
+<section class="bsr-section">
+  <div class="bsr-wrap">
+    {%- if section.settings.pill != blank or section.settings.heading != blank -%}
+      <div class="bsr-sechead">
+        {%- if section.settings.pill != blank -%}
+          <span class="bsr-pill">{{ section.settings.pill }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="bsr-display">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    <div class="bsr-steps">
+      {%- for block in section.blocks -%}
+        <div class="bsr-step" {{ block.shopify_attributes }}>
+          <span class="bsr-step__num">{{ block.settings.number }}</span>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retro steps",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "pill", "label": "Eyebrow", "default": "★ How It Works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Four steps to a season on the mountain." }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "01" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Reserve online" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Pick a package, enter your kid's fitting details, pay for the season in full." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retro steps",
+      "blocks": [
+        { "type": "step", "settings": { "number": "01", "title": "Reserve online", "text": "Pick a package, enter your kid's fitting details, pay for the season in full." } },
+        { "type": "step", "settings": { "number": "02", "title": "Book the fitting", "text": "We email you to schedule a fitting appointment at the Beaverton shop." } },
+        { "type": "step", "settings": { "number": "03", "title": "Ski all winter", "text": "Gear lives at your house all season. Growth spurt? Bring it in and swap." } },
+        { "type": "step", "settings": { "number": "04", "title": "Return in spring", "text": "Drop it back by the season return date. We handle the tune and the storage." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

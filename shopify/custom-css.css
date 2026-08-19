@@ -269,7 +269,7 @@ body::after {
   isolation: isolate;
   min-height: 560px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   background: var(--bsr-teal);
   color: var(--bsr-paper);
   border-bottom: 3px solid var(--bsr-cocoa);
@@ -287,12 +287,26 @@ body::after {
 .bsr-hero__media img,
 .bsr-hero .banner__media img,
 .bsr-hero .hero__media {
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
   object-fit: cover;
-  /* move the crop with --bsr-hero-focus if the kid sits off-centre */
-  object-position: var(--bsr-hero-focus, 60% 38%);
   display: block;
+
+  /* Framing — the only two knobs you should need.
+
+     --bsr-hero-shift widens the image box past the right edge of the
+     hero while it stays pinned to the left, which slides whoever is in
+     the middle of the photo to the right, clear of the copy panel.
+     Bigger number = further right. It can never open a gap, because
+     the box is always at least as wide as the hero.
+
+     --bsr-hero-focus picks which part of the photo survives the crop
+     (first value horizontal, second vertical).                        */
+  width: calc(100% + var(--bsr-hero-shift, 140px));
+  object-position: var(--bsr-hero-focus, 50% 35%);
+
   /* warm a modern photo into a 1970s palette */
   filter: saturate(0.85) contrast(1.06) brightness(1.03) sepia(0.32);
 }
@@ -304,9 +318,9 @@ body::after {
   inset: 0;
   z-index: 1;
   background: linear-gradient(90deg,
-              rgba(45,28,18,0.72) 0%,
-              rgba(45,28,18,0.34) 48%,
-              rgba(45,28,18,0.00) 76%);
+              rgba(45,28,18,0.74) 0%,
+              rgba(45,28,18,0.30) 42%,
+              rgba(45,28,18,0.00) 64%);
 }
 /* colour grade — mustard in the lights, teal in the shadows */
 .bsr-hero__media::after {
@@ -332,15 +346,20 @@ body::after {
   background-size: 5px 5px;
 }
 
+/* The panel sits low and hard left so a wide screen keeps the middle
+   of the photo — where the kid is — completely clear. The container is
+   wider than the rest of the page on purpose: it is what pulls the
+   panel out toward the left edge on a big monitor. */
 .bsr-hero__inner {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1180px;
+  max-width: 1560px;
   margin: 0 auto;
-  padding: 84px 26px 96px;
+  padding: 56px clamp(22px, 4vw, 60px) 56px;
   display: grid;
-  grid-template-columns: minmax(0, 620px);
+  grid-template-columns: minmax(0, 500px);
+  align-content: end;
 }
 
 /* the copy sits on a paper ticket so it survives any crop */
@@ -349,12 +368,12 @@ body::after {
   color: var(--bsr-cocoa);
   border: 4px solid var(--bsr-cocoa);
   border-radius: 8px;
-  box-shadow: 12px 12px 0 var(--bsr-rust);
-  padding: 34px 34px 30px;
+  box-shadow: 10px 10px 0 var(--bsr-rust);
+  padding: 28px 30px 26px;
 }
 .bsr-hero h1 {
-  font-size: clamp(36px, 5.2vw, 62px);
-  margin: 0 0 18px;
+  font-size: clamp(34px, 4.2vw, 52px);
+  margin: 0 0 16px;
   color: var(--bsr-cocoa);
 }
 .bsr-hero__out {
@@ -362,9 +381,9 @@ body::after {
   text-shadow: 4px 4px 0 var(--bsr-mustard);
 }
 .bsr-hero__lead {
-  font-size: 17px;
+  font-size: 16px;
   color: rgba(59,36,22,0.78);
-  margin: 0 0 28px;
+  margin: 0 0 24px;
 }
 .bsr-hero__kicker {
   display: inline-flex;
@@ -376,10 +395,10 @@ body::after {
   font-size: 11.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 7px 14px;
+  padding: 6px 13px;
   border-radius: 99px;
   border: 2.5px solid var(--bsr-cocoa);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .bsr-hero__btns { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 .bsr-hero__note {
@@ -709,8 +728,8 @@ body::after {
 
 @media screen and (max-width: 989px) {
   .bsr-hero { min-height: 480px; }
-  .bsr-hero__inner { padding: 60px 20px 72px; }
-  .bsr-hero__panel { padding: 26px 24px; box-shadow: 8px 8px 0 var(--bsr-rust); }
+  .bsr-hero__inner { padding: 48px 20px 56px; max-width: none; }
+  .bsr-hero__panel { padding: 24px 22px; box-shadow: 8px 8px 0 var(--bsr-rust); }
   .bsr-hero__media::before {
     background: linear-gradient(180deg,
                 rgba(45,28,18,0.20) 0%,
@@ -729,6 +748,12 @@ body::after {
 @media screen and (max-width: 749px) {
   .bsr-hero { display: block; min-height: 0; background: var(--bsr-paper); }
   .bsr-hero__media { position: relative; height: 300px; }
+  /* the panel sits below the photo on a phone, so nothing needs
+     sliding out of its way */
+  .bsr-hero__media img {
+    width: 100%;
+    object-position: var(--bsr-hero-focus-mobile, 50% 30%);
+  }
   .bsr-hero__inner { padding: 0 16px 44px; margin-top: -44px; }
   .bsr-hero__panel { box-shadow: 7px 7px 0 var(--bsr-rust); }
   .bsr-hero__kicker { font-size: 10.5px; letter-spacing: 0.1em; }
