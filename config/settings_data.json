@@ -11,7 +11,8 @@
   "current": {
     "logo": "shopify://shop_images/Beaverton_Ski_and_Snowboard_Rentals_Logo_v1.3.png",
     "logo_width": 290,
-    "brand_image": "shopify://shop_images/Beaverton_Ski_and_Snowboard_Rentals_Logo_v1.3.png",
+    "animations_reveal_on_scroll": false,
+    "brand_image": "shopify://shop_images/Beaverton_Ski_and_Snowboard_Rentals_Logo_v1.1.png",
     "content_for_index": []
   }
 }

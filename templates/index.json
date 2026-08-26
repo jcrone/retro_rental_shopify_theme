@@ -19,13 +19,14 @@
     "retro_hero": {
       "type": "retro-hero",
       "settings": {
+        "image": "shopify://shop_images/Snow_throw_fam_v1.0.png",
         "image_url": "https://cdn.shopify.com/s/files/1/0926/4031/3366/files/61d0b2404a32b68f4dc1f7d015e8457b.png?v=15025210",
         "image_alt": "Kid in ski gear on the mountain",
-        "photo_shift": 560,
+        "photo_shift": 520,
         "focus_x": 50,
-        "focus_y": 35,
+        "focus_y": 65,
         "height": 560,
-        "focus_x_mobile": 50,
+        "focus_x_mobile": 100,
         "focus_y_mobile": 30,
         "kicker": "★ Kids Season Rentals · Winter 2026–27",
         "heading": "One price.",
