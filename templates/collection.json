@@ -29,24 +29,6 @@
           "type": "price",
           "settings": {}
         },
-        "variant_picker_R38eLV": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "dropdown",
-            "swatch_shape": "circle"
-          }
-        },
-        "quantity_selector_7pfMkt": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
-        "buy_buttons_PP4xrt": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        },
         "share_xip66U": {
           "type": "share",
           "settings": {
@@ -58,9 +40,6 @@
         "text_cDUTCk",
         "title_6CENUX",
         "price_9np8RX",
-        "variant_picker_R38eLV",
-        "quantity_selector_7pfMkt",
-        "buy_buttons_PP4xrt",
         "share_xip66U"
       ],
       "name": "t:sections.featured-product.presets.name",
