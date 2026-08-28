@@ -34,6 +34,12 @@
             "swatch_shape": "none"
           }
         },
+        "wow_product_options_product_option_WiWzfF": {
+          "type": "shopify://apps/wow-product-options/blocks/product_option/1fdbe2f6-2b53-4646-b8e5-0c0f47e39f41",
+          "settings": {
+            "product_Wow": "{{product}}"
+          }
+        },
         "quantity_selector": {
           "type": "quantity_selector",
           "settings": {}
@@ -61,6 +67,7 @@
         "title",
         "price",
         "variant_picker",
+        "wow_product_options_product_option_WiWzfF",
         "quantity_selector",
         "buy_buttons",
         "description",
@@ -110,11 +117,18 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "1787955901f17b9643": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
     "disclosures",
-    "related-products"
+    "related-products",
+    "1787955901f17b9643"
   ]
 }
