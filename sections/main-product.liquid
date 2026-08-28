@@ -41,6 +41,7 @@
 
   <script src="{{ 'product-info.js' | asset_url }}" defer="defer"></script>
   <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'variant-selection-guard.js' | asset_url }}" defer="defer"></script>
   {%- if product.quantity_price_breaks_configured? -%}
     <script src="{{ 'show-more.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'price-per-item.js' | asset_url }}" defer="defer"></script>
@@ -919,6 +920,19 @@
             }
           ],
           "default": "circle"
+        },
+        {
+          "type": "checkbox",
+          "id": "require_selection",
+          "default": false,
+          "label": "Require variant selection",
+          "info": "Dropdowns start on a prompt (e.g. “Select one”) instead of the first variant, and add to cart stays disabled until every option is chosen. Applies to dropdown pickers only. Useful for bundle products."
+        },
+        {
+          "type": "text",
+          "id": "select_prompt",
+          "default": "Select one",
+          "label": "Selection prompt text"
         }
       ]
     },

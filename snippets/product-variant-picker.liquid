@@ -9,8 +9,21 @@
   {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
 {% endcomment %}
 {%- unless product.has_only_default_variant -%}
+  {%- liquid
+    # Force an explicit choice: when enabled and the URL doesn't already pin a
+    # variant, variant-selection-guard.js swaps the preselected value for a
+    # disabled prompt and blocks add-to-cart until every option is chosen.
+    assign require_selection = false
+    if block.settings.require_selection and product.selected_variant == nil
+      assign require_selection = true
+    endif
+  -%}
   <variant-selects
     id="variant-selects-{{ section.id }}"
+    {% if require_selection %}
+      data-require-selection="true"
+      data-select-prompt="{{ block.settings.select_prompt | default: 'Select one' | escape }}"
+    {% endif %}
     data-section="{{ section.id }}"
     data-product-handle="{{ product.handle }}"
     data-product-title="{{ product.title | escape }}"
