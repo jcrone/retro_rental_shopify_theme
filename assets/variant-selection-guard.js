@@ -44,16 +44,21 @@
     submitButton?.setAttribute('disabled', 'disabled');
     if (dynamicCheckout) dynamicCheckout.style.display = 'none';
 
+    // ProductInfo.updateVariantInputs dispatches a change event when it sets
+    // the id after a re-render; only then is dynamic checkout usable again.
+    if (dynamicCheckout && variantIdInput) {
+      variantIdInput.addEventListener('change', () => {
+        dynamicCheckout.style.display = variantIdInput.value ? '' : 'none';
+      });
+    }
+
     variantSelects.addEventListener(
       'change',
       (event) => {
         const select = event.target;
         if (select.tagName !== 'SELECT') return;
 
-        if (selects.every((el) => el.value !== '')) {
-          if (dynamicCheckout) dynamicCheckout.style.display = '';
-          return;
-        }
+        if (selects.every((el) => el.value !== '')) return;
 
         // Options are still missing: record this dropdown's choice, but stop
         // the event before VariantSelects triggers a server re-render that

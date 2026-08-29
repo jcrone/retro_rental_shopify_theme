@@ -1,12 +1,3 @@
-/*
- * Product template for bundle products.
- *
- * Same layout as the default product template, but the variant picker
- * requires an explicit choice: dropdowns start on "Select one" and the
- * add-to-cart button stays disabled until every option is chosen.
- *
- * Assign it in the Shopify admin: Product > Theme template > bundle.
- */
 {
   "sections": {
     "main": {

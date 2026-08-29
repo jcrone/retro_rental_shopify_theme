@@ -13,8 +13,9 @@
     # Force an explicit choice: when enabled and the URL doesn't already pin a
     # variant, variant-selection-guard.js swaps the preselected value for a
     # disabled prompt and blocks add-to-cart until every option is chosen.
+    # Dropdown pickers only — button/swatch pickers render no selects.
     assign require_selection = false
-    if block.settings.require_selection and product.selected_variant == nil
+    if block.settings.require_selection and product.selected_variant == nil and block.settings.picker_type == 'dropdown'
       assign require_selection = true
     endif
   -%}
