@@ -34,6 +34,12 @@
             "text_style": "body"
           }
         },
+        "wow_product_options_product_option_Ry7YTU": {
+          "type": "shopify://apps/wow-product-options/blocks/product_option/1fdbe2f6-2b53-4646-b8e5-0c0f47e39f41",
+          "settings": {
+            "product_Wow": "{{product}}"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -70,6 +76,7 @@
         "title",
         "price",
         "text_nnyNqj",
+        "wow_product_options_product_option_Ry7YTU",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
